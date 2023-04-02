@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="AdwApplicationWindow" id="win">
+    <property name="default-width">1000</property>
+    <property name="default-height">720</property>
+    <property name="content">
+      
+      <object class="AdwLeaflet" id="leaflet"> <!--相当于hbox-->
+        <child>                                <!--第一个区域-->
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="AdwHeaderBar">
+                <binding name="show-end-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
+              </object>
+            </child>
+            <!-- ... -->
+            <child>
+             <object class="GtkLabel">
+                <property name="margin-start">5</property>
+                <property name="label" translatable="yes">AI视频监控平台aaaa</property>
+                <property name="width-request">100</property>
+                <property name="height-request">40</property>
+                <attributes>
+                  <attribute name="font-desc" value="aakar Bold 14"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+        </child>
+        
+        <child>                                <!--第二个区域-->
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="AdwHeaderBar">
+                <binding name="show-end-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
+              </object>
+            </child>
+            <!-- ... -->
+            <child>
+             <object class="GtkLabel">
+                <property name="margin-start">5</property>
+                <property name="label" translatable="yes">AI视频监控平台bbb</property>
+                <property name="width-request">100</property>
+                <property name="height-request">40</property>
+                <attributes>
+                  <attribute name="font-desc" value="aakar Bold 14"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+        </child>
+
+
+        <child>                                    <!--第三个区域-->
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="hexpand">True</property>
+            <child>
+              <object class="AdwHeaderBar">
+                <binding name="show-start-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
+              </object>
+            </child>
+            <!-- ... -->
+          </object>
+        </child>
+      </object>
+
+    </property>
+  </object>
+</interface>
+
+
+

@@ -1,0 +1,7 @@
+data/org.gnome.Patterns.desktop.in
+data/org.gnome.Patterns.appdata.xml.in
+data/org.gnome.Patterns.gschema.xml
+src/patterns-window.ui
+src/main.c
+src/patterns-window.c
+

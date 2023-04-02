@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PatternsPageWelcome" parent="PatternsPage">
+    <property name="title" translatable="yes">Welcome</property>
+    <property name="child">
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="hscrollbar-policy">never</property>
+        <property name="propagate-natural-height">True</property>
+        <property name="child">
+          <object class="AdwClamp">
+            <property name="maximum-size">500</property>
+            <property name="tightening-threshold">500</property>
+            <property name="margin-top">24</property>
+            <property name="margin-bottom">24</property>
+            <property name="margin-start">24</property>
+            <property name="margin-end">24</property>
+            <property name="child">
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="valign">center</property>
+                <property name="spacing">24</property>
+                <child>
+                  <object class="AdwClamp">
+                    <property name="maximum-size">360</property>
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="valign">center</property>
+                        <property name="spacing">24</property>
+                        <child>
+                          <object class="GtkPicture">
+                            <property name="file">resource:///org/gnome/Patterns/assets/welcome.svg</property>
+                            <property name="height-request">120</property>
+                            <property name="margin-start">36</property>
+                            <property name="margin-end">36</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="wrap">True</property>
+                            <property name="wrap-mode">word-char</property>
+                            <property name="justify">center</property>
+                            <property name="label" translatable="yes">Welcome to the GNOME platform demo</property>
+                            <style>
+                              <class name="title-1"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="wrap">True</property>
+                    <property name="wrap-mode">word-char</property>
+                    <property name="justify">center</property>
+                    <property name="use-markup">True</property>
+                    <property name="label" translatable="yes">More information about each of the design patterns can be found in the &lt;a href="https://developer.gnome.org/hig/"&gt;GNOME Human Interface Guidelines&lt;/a&gt;. It is recommended to use &lt;a href="patterns://inspector"&gt;GTK Inspector&lt;/a&gt; to see how each of the demos is put together.</property>
+                    <signal name="activate-link" handler="activate_link_cb" swapped="yes"/>
+                    <style>
+                      <class name="body"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="wrap">True</property>
+                    <property name="wrap-mode">word-char</property>
+                    <property name="justify">center</property>
+                    <property name="use-markup">True</property>
+                    <property name="label" translatable="yes">Some design patterns are built directly into the Patterns app.</property>
+                    <style>
+                      <class name="body"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

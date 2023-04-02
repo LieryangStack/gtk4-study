@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.gnome.Patterns</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT or LGPL-2.1-or-later</project_license>
+  <launchable type="desktop-id">org.gnome.Patterns.desktop</launchable>
+
+  <name>Patterns</name>
+  <summary>The GNOME platform demo app</summary>
+
+  <description>
+    <p>
+      Patterns is the GNOME platform demo app, focused on the GNOME HIG design patterns.
+    </p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://gitlab.gnome.org/exalm/patterns/-/raw/main/data/screenshots/welcome.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.gnome.org/exalm/patterns/-/raw/main/data/screenshots/controls.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.gnome.org/exalm/patterns/-/raw/main/data/screenshots/utility-pane.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="0.1" date="2021-08-03">
+      <description>
+        <p>A nonexistent release until there's an actual one.</p>
+      </description>
+    </release>
+  </releases>
+
+  <project_group>GNOME</project_group>
+
+
+  <url type="homepage">https://gitlab.gnome.org/exalm/patterns</url>
+  <url type="bugtracker">https://gitlab.gnome.org/exalm/patterns/issues</url>
+  <url type="donation">http://www.gnome.org/friends/</url>
+
+  <content_rating type="oars-1.1" />
+  <translation type="gettext">patterns</translation>
+
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
+
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+</component>

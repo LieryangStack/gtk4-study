@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="AdwApplicationWindow" id="win">
+    <property name="default-width">1000</property>
+    <property name="default-height">720</property>
+    <property name="content">
+      <object class="GtkBox"><!--垂直box（标题栏，按钮）-->
+        <property name="orientation">vertical</property>
+          <!--标题栏-->
+          <child>
+            <object class="AdwHeaderBar" id="headerbar">
+              <property name="show-end-title-buttons">False</property>
+              <property name="show-start-title-buttons">True</property>
+              <property name="hexpand">True</property>
+              <property name="title-widget">
+                <object class="AdwWindowTitle">
+                  <property name="title" translatable="yes">选项栏</property>
+                </object>
+              </property>
+            </object>
+          </child>
+          <child>
+            <object class="GtkButton">
+              <property name="label">button</property>
+            </object>
+          </child>
+      </object>
+    </property>
+  </object>
+</interface>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="patterns">
+	<schema id="org.gnome.Patterns" path="/org/gnome/Patterns/">
+	</schema>
+</schemalist>

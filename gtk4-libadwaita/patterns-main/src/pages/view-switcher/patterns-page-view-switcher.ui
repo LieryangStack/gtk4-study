@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PatternsPageViewSwitcher" parent="PatternsPage">
+    <property name="title" translatable="yes">View Switcher</property>
+    <property name="child">
+      <object class="AdwStatusPage">
+        <property name="icon-name">page-view-switcher-symbolic</property>
+        <property name="title" translatable="yes">View Switcher</property>
+        <property name="description" translatable="yes">Switch between a small number of views.</property>
+        <property name="child">
+          <object class="GtkButton">
+            <property name="action-name">demo.run</property>
+            <property name="label" translatable="yes">View Switcher Demo</property>
+            <property name="halign">center</property>
+            <style>
+              <class name="pill"/>
+            </style>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+  <object class="AdwWindow" id="demo">
+    <property name="title" translatable="yes">View Switcher Demo</property>
+    <property name="default-width">700</property>
+    <property name="default-height">540</property>
+    <property name="hide-on-close">True</property>
+    <property name="content">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwHeaderBar">
+            <property name="centering-policy">strict</property>
+            <property name="title-widget">
+              <object class="AdwViewSwitcherTitle" id="switcher_title">
+                <property name="title" bind-source="demo" bind-property="title" bind-flags="sync-create"/>
+                <property name="stack">stack</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwViewStack" id="stack">
+            <property name="vexpand">True</property>
+            <style>
+              <class name="numeric"/>
+            </style>
+            <child>
+              <object class="AdwViewStackPage" id="view1">
+                <property name="title" translatable="yes">View 1</property>
+                <property name="icon-name">data-music-symbolic</property>
+                <property name="child">
+                  <object class="AdwStatusPage">
+                    <binding name="title">
+                      <lookup name="title">view1</lookup>
+                    </binding>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwViewStackPage" id="view2">
+                <property name="title" translatable="yes">View 2</property>
+                <property name="icon-name">data-photos-symbolic</property>
+                <property name="child">
+                  <object class="AdwStatusPage">
+                    <binding name="title">
+                      <lookup name="title">view2</lookup>
+                    </binding>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwViewStackPage" id="view3">
+                <property name="title" translatable="yes">View 3</property>
+                <property name="icon-name">data-movies-symbolic</property>
+                <property name="child">
+                  <object class="AdwStatusPage">
+                    <binding name="title">
+                      <lookup name="title">view3</lookup>
+                    </binding>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwViewStackPage" id="view4">
+                <property name="title" translatable="yes">View 4</property>
+                <property name="icon-name">star-outline-thick-symbolic</property>
+                <property name="child">
+                  <object class="AdwStatusPage">
+                    <binding name="title">
+                      <lookup name="title">view4</lookup>
+                    </binding>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwViewSwitcherBar" id="switcher_bar">
+            <property name="stack">stack</property>
+            <property name="reveal" bind-source="switcher_title" bind-property="title-visible" bind-flags="sync-create"/>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>

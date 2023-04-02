@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/test">
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-camera-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-message-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-photo-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-record-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-refresh-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-input-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-fullscreen-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-search-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-trash-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/vpf-update-symbolic.svg</file>
+
+    <file preprocess="xml-stripblanks">icons/scalable/apps/org.example.Typeset.svg</file>
+
+    <file preprocess="xml-stripblanks">application.ui</file>
+
+  </gresource>
+</gresources>

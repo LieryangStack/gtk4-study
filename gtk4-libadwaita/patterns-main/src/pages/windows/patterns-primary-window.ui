@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PatternsPrimaryWindow" parent="GtkWindow">
+    <property name="title" translatable="yes">Primary Window</property>
+    <property name="default-width">700</property>
+    <property name="default-height">640</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar"/>
+    </child>
+    <child>
+      <object class="AdwStatusPage">
+        <property name="title" translatable="yes">Primary Window</property>
+        <property name="description" translatable="yes">Primary windows are the top level containers for application UI. Secondary windows are dependent on and modal to primary windows.</property>
+        <property name="child">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">12</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Example Secondary Windows</property>
+                <property name="margin-bottom">12</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="secondary_button">
+                <property name="action-name">demo.secondary</property>
+                <property name="label" translatable="yes">Secondary Window Demo</property>
+                <property name="halign">center</property>
+                <style>
+                  <class name="pill"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="preferences_button">
+                <property name="action-name">demo.preferences</property>
+                <property name="label" translatable="yes">Preferences Window Demo</property>
+                <property name="halign">center</property>
+                <style>
+                  <class name="pill"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="about_button">
+                <property name="action-name">demo.about</property>
+                <property name="label" translatable="yes">About Window Demo</property>
+                <property name="halign">center</property>
+                <style>
+                  <class name="pill"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+
+  <object class="GtkWindow" id="secondary_window">
+    <property name="title" translatable="yes">Secondary Window</property>
+    <property name="default-width">550</property>
+    <property name="default-height">460</property>
+    <property name="hide-on-close">True</property>
+    <property name="transient-for">PatternsPrimaryWindow</property>
+    <property name="modal">True</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar"/>
+    </child>
+    <child>
+      <object class="AdwStatusPage">
+        <property name="title" translatable="yes">Window Content</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkSizeGroup">
+    <property name="mode">horizontal</property>
+    <widgets>
+      <widget name="secondary_button"/>
+      <widget name="preferences_button"/>
+      <widget name="about_button"/>
+    </widgets>
+  </object>
+
+  <object class="AdwPreferencesWindow" id="preferences_window">
+    <property name="hide-on-close">True</property>
+    <property name="transient-for">PatternsPrimaryWindow</property>
+    <property name="modal">True</property>
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title" translatable="yes">Page 1</property>
+        <property name="icon-name">preferences-page-symbolic</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title" translatable="yes">Page 2</property>
+        <property name="icon-name">preferences-page-symbolic</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title" translatable="yes">Page 3</property>
+        <property name="icon-name">preferences-page-symbolic</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Group Title</property>
+            <property name="description" translatable="yes">Group description.</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Row Title</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

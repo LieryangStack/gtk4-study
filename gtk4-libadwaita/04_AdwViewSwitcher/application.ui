@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="AdwApplicationWindow" id="win">
+    <property name="default-width">1000</property>
+    <property name="default-height">720</property>
+    <property name="content">
+      <object class="GtkBox"><!--vbox（标题栏，按钮）-->
+      <property name="hexpand">True</property>
+      <property name="vexpand">True</property>
+        <property name="orientation">vertical</property>
+        <!--标题栏-->
+        <child>
+          <object class="AdwHeaderBar">
+            <property name="hexpand">True</property>
+
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkBox">
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="orientation">vertical</property>
+
+            <child>
+              <object class="AdwViewStack" id="stack">
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>  
+                <child>
+                  <object class="AdwViewStackPage">
+                    <property name="name">page1</property>
+                    <property name="title" translatable="yes">摄像头预览1</property>
+                    <property name="icon-name">camera-video-symbolic</property>
+                    <property name="child">
+                      <object class="GtkLabel">
+                        <property name="margin-top">24</property>
+                        <property name="margin-bottom">24</property>
+                        <property name="margin-start">24</property>
+                        <property name="margin-end">24</property>
+                        <property name="label" translatable="yes">Stopwatch Stopwatch Stopwatch Stopwatch Stopwatch</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwViewStackPage">
+                    <property name="name">page2</property>
+                    <property name="title" translatable="yes">摄像头预览2</property>
+                    <property name="icon-name">camera-video-symbolic</property>
+                    <property name="child">
+                      <object class="GtkLabel">
+                        <property name="margin-top">24</property>
+                        <property name="margin-bottom">24</property>
+                        <property name="margin-start">24</property>
+                        <property name="margin-end">24</property>
+                        <property name="label" translatable="yes">无任何信息</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwViewSwitcher">
+                <property name="stack">stack</property>
+                <property name="policy">ADW_VIEW_SWITCHER_POLICY_NARROW</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwViewSwitcherBar">
+                <property name="stack">stack</property>
+                <property name="reveal">True</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwViewSwitcherTitle">
+                <property name="stack">stack</property>
+              </object>
+            </child>
+
+
+          </object>
+        </child>
+
+      </object> <!--vbox end-->
+    </property>
+  </object>
+</interface>

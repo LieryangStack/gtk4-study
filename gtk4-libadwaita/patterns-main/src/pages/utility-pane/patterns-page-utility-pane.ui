@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PatternsPageUtilityPane" parent="PatternsPage">
+    <property name="title" translatable="yes">Utility Pane</property>
+    <property name="child">
+      <object class="AdwStatusPage">
+        <property name="icon-name">page-utility-pane-symbolic</property>
+        <property name="title" translatable="yes">Utility Pane</property>
+        <property name="description" translatable="yes">A vertical panel which is secondary to the main view.</property>
+        <property name="child">
+          <object class="GtkButton">
+            <property name="action-name">demo.run</property>
+            <property name="label" translatable="yes">Utility Pane Demo</property>
+            <property name="halign">center</property>
+            <style>
+              <class name="pill"/>
+            </style>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+  <object class="AdwWindow" id="demo">
+    <property name="title" translatable="yes">Utility Pane Demo</property>
+    <property name="default-width">700</property>
+    <property name="default-height">540</property>
+    <property name="hide-on-close">True</property>
+    <property name="content">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkHeaderBar">
+            <child type="start">
+              <object class="GtkToggleButton" id="show_sidebar_button">
+                <property name="icon-name">sidebar-show-symbolic</property>
+                <property name="active">True</property>
+                <binding name="visible">
+                  <lookup name="active">start_button</lookup>
+                </binding>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkToggleButton">
+                <property name="icon-name">sidebar-show-right-symbolic</property>
+                <property name="active" bind-source="show_sidebar_button" bind-property="active" bind-flags="sync-create|bidirectional"/>
+                <binding name="visible">
+                  <lookup name="active">end_button</lookup>
+                </binding>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwFlap">
+            <property name="reveal-flap" bind-source="show_sidebar_button" bind-property="active" bind-flags="sync-create|bidirectional"/>
+            <property name="vexpand">True</property>
+            <binding name="flap-position">
+              <closure type="GtkPackType" function="get_flap_position">
+                <lookup name="active">start_button</lookup>
+              </closure>
+            </binding>
+            <property name="flap">
+              <object class="AdwBin">
+                <style>
+                  <class name="background"/>
+                </style>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="margin-start">50</property>
+                    <property name="margin-end">50</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <property name="valign">center</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Utility Pane</property>
+                        <property name="wrap">True</property>
+                        <property name="margin-bottom">24</property>
+                        <style>
+                          <class name="large-title"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton" id="start_button">
+                        <property name="label" translatable="yes">Start</property>
+                        <property name="active">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton" id="end_button">
+                        <property name="label" translatable="yes">End</property>
+                        <property name="group">start_button</property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </property>
+            <property name="separator">
+              <object class="GtkSeparator"/>
+            </property>
+            <property name="content">
+              <object class="GtkLabel">
+                <property name="width-request">360</property>
+                <property name="label" translatable="yes">Main View</property>
+                <property name="wrap">True</property>
+                <style>
+                  <class name="large-title"/>
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>

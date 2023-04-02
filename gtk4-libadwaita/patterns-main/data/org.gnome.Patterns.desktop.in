@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Patterns
+Comment=The GNOME platform demo app
+Exec=patterns
+Icon=org.gnome.Patterns
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
+X-Purism-FormFactor=Workstation;Mobile;

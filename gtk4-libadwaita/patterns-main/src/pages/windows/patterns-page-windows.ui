@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="PatternsPageWindows" parent="PatternsPage">
+    <property name="title" translatable="yes">Windows</property>
+    <property name="child">
+      <object class="AdwStatusPage">
+        <property name="icon-name">page-windows-symbolic</property>
+        <property name="title" translatable="yes">Windows</property>
+        <property name="description" translatable="yes">The primary containers for application user interfaces.</property>
+        <property name="child">
+          <object class="GtkButton">
+            <property name="action-name">demo.primary</property>
+            <property name="label" translatable="yes">Primary Window Demo</property>
+            <property name="halign">center</property>
+            <style>
+              <class name="pill"/>
+            </style>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+  <object class="PatternsPrimaryWindow" id="primary_window">
+    <property name="hide-on-close">True</property>
+  </object>
+</interface>

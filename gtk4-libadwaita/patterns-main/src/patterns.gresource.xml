@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/Patterns">
+    <file preprocess="xml-stripblanks">assets/welcome.svg</file>
+
+    <file preprocess="xml-stripblanks">icons/scalable/actions/call-start-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/data-movies-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/data-music-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/data-photos-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/document-edit-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/edit-copy-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/edit-cut-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/media-playback-start-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/open-link-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/padlock2-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/preferences-page-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/sidebar-show-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/sidebar-show-symbolic-rtl.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/sidebar-show-right-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/sidebar-show-right-symbolic-rtl.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/star-outline-thick-symbolic.svg</file>
+
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-boxed-lists-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-column-view-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-controls-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-feedback-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-grid-view-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-list-view-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-sidebar-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-tabs-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-utility-pane-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-utility-pane-symbolic-rtl.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-view-switcher-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-welcome-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/page-windows-symbolic.svg</file>
+
+    <file preprocess="xml-stripblanks">icons/scalable/apps/org.example.Typeset.svg</file>
+
+    <file preprocess="xml-stripblanks">pages/boxed-lists/patterns-page-boxed-lists.ui</file>
+    <file preprocess="xml-stripblanks">pages/controls/patterns-page-controls.ui</file>
+    <file preprocess="xml-stripblanks">pages/stub/patterns-page-stub.ui</file>
+    <file preprocess="xml-stripblanks">pages/utility-pane/patterns-page-utility-pane.ui</file>
+    <file preprocess="xml-stripblanks">pages/view-switcher/patterns-page-view-switcher.ui</file>
+    <file preprocess="xml-stripblanks">pages/welcome/patterns-page-welcome.ui</file>
+    <file preprocess="xml-stripblanks">pages/windows/patterns-page-windows.ui</file>
+    <file preprocess="xml-stripblanks">pages/windows/patterns-primary-window.ui</file>
+
+    <file preprocess="xml-stripblanks">patterns-page.ui</file>
+    <file preprocess="xml-stripblanks">patterns-window.ui</file>
+    <file compressed="true">style.css</file>
+  </gresource>
+</gresources>

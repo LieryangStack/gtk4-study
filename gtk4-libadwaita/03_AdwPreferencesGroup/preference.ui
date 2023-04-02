@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="AdwApplicationWindow" id="win">
+    <property name="default-width">1000</property>
+    <property name="default-height">720</property>
+    <property name="content">
+      <object class="GtkBox"><!--垂直box（标题栏，list）-->
+        <property name="orientation">vertical</property>
+        <child><!--标题栏-->
+          <object class="AdwHeaderBar">
+            <property name="hexpand">True</property>
+            <property name="title-widget">
+              <object class="AdwWindowTitle">
+                <property name="title" translatable="yes">选项栏</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child><!--list-->
+          <object class="AdwBin" id="bin">
+            <property name="child">
+              <object class="AdwStatusPage">
+                <property name="icon-name">go-home</property>
+                <property name="title" translatable="yes">Lists</property>
+                <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property>
+                <property name="child">
+                  <object class="AdwClamp">
+                    <property name="maximum-size">400</property>
+                    <property name="tightening-threshold">300</property>
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="icon-name">emote-love-symbolic</property>
+                                <property name="subtitle" translatable="yes">They also have a subtitle and an icon</property>
+                                <property name="title" translatable="yes">Rows have a title</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="icon-name">microphone-sensitivity-muted-symbolic</property>
+                                <property name="title" translatable="yes">请打开麦克风进行语音交流</property>
+                                <child>
+                                  <object class="GtkButton">
+                                    <property name="label" translatable="yes">Action</property>
+                                    <property name="valign">center</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwActionRow">
+                                <!--activatable_widget 这个构件被激活的时候，它等于的radio_button_1也会被激活-->
+                                <property name="activatable_widget">radio_button_1</property>
+                                <property name="icon-name">camera-video-symbolic</property>
+                                <property name="title" translatable="yes">视频交流</property>
+                                <child type="prefix">
+                                  <object class="GtkCheckButton" id="radio_button_1">
+                                    <property name="valign">center</property>
+                                    <property name="active">True</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwActionRow">
+                                 <property name="activatable_widget">radio_button_2</property>
+                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                <property name="title" translatable="yes">音频交流</property>
+                                <child type="prefix">
+                                  <object class="GtkCheckButton" id="radio_button_2">
+                                    <property name="group">radio_button_1</property>
+                                    <property name="valign">center</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <property name="title" translatable="yes">Entry Rows</property>
+                            <child>
+                              <object class="AdwEntryRow">
+                                <property name="title" translatable="yes">Entry Row</property>
+                                <property name="use_underline">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwEntryRow">
+                                <property name="title" translatable="yes">Entry With Confirmation</property>
+                                <property name="show-apply-button">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwEntryRow">
+                                <property name="title" translatable="yes">Entry With Suffix</property>
+                                <child>
+                                  <object class="GtkButton">
+                                    <property name="valign">center</property>
+                                    <property name="icon_name">edit-copy-symbolic</property>
+                                    <style>
+                                      <class name="flat"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwPasswordEntryRow">
+                                <property name="title" translatable="yes">Password Entry</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>
+
+
+
+
+  

@@ -1,0 +1,919 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.10.3 -->
+<interface>
+  <!-- interface-name application.ui -->
+  <requires lib="gtk" version="4.6"/>
+  <requires lib="libadwaita" version="1.1"/>
+  <template class="VpfApplicationWindow" parent="AdwApplicationWindow">
+    <property name="default-height">700</property>
+    <property name="default-width">1100</property>
+    <child>
+      <object class="GtkBox" id="main_window_vbox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwHeaderBar" id="main_window_headerbar">
+            <property name="show-end-title-buttons">False</property>
+            <child type="title">
+              <object class="AdwWindowTitle" id="main_window_headerbar_title">
+                <property name="hexpand">True</property>
+                <property name="title">Ai视频监控平台</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkStackSwitcher" id="main_window_headerbar_switcher">
+                <property name="stack">main_window_stack</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="main_window_stack">
+            <property name="transition-type">crossfade</property>
+            <child>
+              <object class="GtkStackPage" id="video_stack_page">
+                <property name="child">
+                  <object class="GtkBox" id="video_page_hbox">
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkBox" id="video_info_vbox">
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkSearchBar" id="video_info_switcher_bar">
+                            <property name="child">
+                              <object class="AdwViewSwitcher" id="video_info_switcher">
+                                <property name="policy">wide</property>
+                                <property name="stack">video_info_stack</property>
+                                <property name="width-request">250</property>
+                              </object>
+                            </property>
+                            <property name="height-request">45</property>
+                            <property name="search-mode-enabled">True</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwViewStack" id="video_info_stack">
+                            <property name="vexpand">True</property>
+                            <child>
+                              <object class="AdwViewStackPage" id="video_picture_info_stack_page">
+                                <property name="child">
+                                  <object class="GtkScrolledWindow" id="picture_info_scrolled_window">
+                                    <property name="child">
+                                      <object class="GtkBox" id="picture_info_vbox">
+                                        <property name="orientation">vertical</property>
+                                        <property name="spacing">2</property>
+                                        <property name="vexpand">True</property>
+                                        <child>
+                                          <object class="AdwStatusPage" id="no_picture_info_status_page">
+                                            <property name="description">请到视频管理页面进行设备添加</property>
+                                            <property name="icon-name">vpf-camera-symbolic</property>
+                                            <property name="title">无摄像头设备</property>
+                                            <property name="vexpand">True</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                    <property name="hscrollbar-policy">never</property>
+                                  </object>
+                                </property>
+                                <property name="icon-name">vpf-camera-symbolic</property>
+                                <property name="name">视频预览</property>
+                                <property name="title">摄像头</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwViewStackPage" id="video_warn_info_stack_page">
+                                <property name="badge-number">1</property>
+                                <property name="child">
+                                  <object class="GtkScrolledWindow" id="warn_info_scrolled_window">
+                                    <property name="child">
+                                      <object class="GtkBox" id="warn_info_vbox">
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="AdwStatusPage" id="no_warn_info_status_page">
+                                            <property name="icon-name">vpf-message-symbolic</property>
+                                            <property name="title">无任何告警信息</property>
+                                            <property name="vexpand">True</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </property>
+                                <property name="icon-name">vpf-message-symbolic</property>
+                                <property name="needs-attention">True</property>
+                                <property name="title">告警信息</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator" id="video_info_and_live_separator"/>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="video_live_vbox">
+                        <property name="hexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="vexpand">True</property>
+                        <child>
+                          <object class="GtkInfoBar" id="video_live_device_info_bar">
+                            <property name="height-request">30</property>
+                            <property name="hexpand">True</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkDrawingArea" id="video_live_drawing_area">
+                            <property name="hexpand">True</property>
+                            <property name="vexpand">True</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwHeaderBar" id="video_live_button_bar">
+                            <property name="hexpand">True</property>
+                            <property name="show-end-title-buttons">True</property>
+                            <property name="show-start-title-buttons">False</property>
+                            <child type="title">
+                              <object class="GtkLabel">
+                                <property name="label">1</property>
+                                <property name="opacity">0.0</property>
+                                <property name="visible">False</property>
+                              </object>
+                            </child>
+                            <child type="start">
+                              <object class="GtkBox" id="video_live_button_bar_hbox_start">
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkButton" id="video_live_photo_button">
+                                    <property name="icon-name">vpf-photo-symbolic</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="video_live_record_button">
+                                    <property name="icon-name">vpf-record-symbolic</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="video_live_refresh_button">
+                                    <property name="icon-name">vpf-refresh-symbolic</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkToggleButton" id="video_live_detect_area_toggle_button">
+                                    <property name="icon-name">vpf-input-symbolic</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="end">
+                              <object class="GtkBox" id="video_live_button_bar_hbox_end">
+                                <child>
+                                  <object class="GtkButton" id="video_live_full_screen_button">
+                                    <property name="icon-name">vpf-fullscreen-symbolic</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+                <property name="name">实时视频</property>
+                <property name="title">实时视频</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage" id="set_stack_page">
+                <property name="child">
+                  <object class="GtkBox" id="set_page_hbox">
+                    <child>
+                      <object class="GtkPaned" id="set_detect_vpaned">
+                        <property name="orientation">vertical</property>
+                        <property name="vexpand">True</property>
+                        <property name="width-request">300</property>
+                        <child>
+                          <object class="GtkPicture" id="picture">
+                            <property name="height-request">200</property>
+                            <property name="width-request">300</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkScrolledWindow" id="set_detect_column_scrolled_window">
+                            <child>
+                              <object class="GtkColumnView" id="set_detect_column_view">
+                                <property name="model">detect_column_view_selection</property>
+                                <property name="show-row-separators">True</property>
+                                <property name="vexpand">True</property>
+                                <child>
+                                  <object class="GtkColumnViewColumn" id="set_detect_type_column">
+                                    <property name="expand">True</property>
+                                    <property name="factory">detect_type_item_factory</property>
+                                    <property name="resizable">True</property>
+                                    <property name="title">识别类型</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkColumnViewColumn" id="set_detect_border_color_column">
+                                    <property name="expand">True</property>
+                                    <property name="factory">detect_border_color_item_fatory</property>
+                                    <property name="resizable">True</property>
+                                    <property name="title">边框颜色</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkColumnViewColumn" id="set_detect_background_color_column">
+                                    <property name="expand">True</property>
+                                    <property name="factory">detect_background_color_item_factory</property>
+                                    <property name="resizable">True</property>
+                                    <property name="title">边框背景色</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkColumnViewColumn" id="set_detect_active_status_column">
+                                    <property name="expand">True</property>
+                                    <property name="factory">detect_active_statute_item_factory</property>
+                                    <property name="resizable">True</property>
+                                    <property name="title">状态</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator" id="set_page_separator"/>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="set_camera_vobx">
+                        <property name="hexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="vexpand">True</property>
+                        <child>
+                          <object class="GtkPaned" id="set_add_camera_paned">
+                            <property name="hexpand">True</property>
+                            <property name="orientation">vertical</property>
+                            <property name="vexpand">True</property>
+                            <child>
+                              <object class="GtkBox" id="set_add_camera_button_hbox">
+                                <property name="hexpand">True</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkButton" id="set_add_camera_search_button">
+                                    <property name="child">
+                                      <object class="GtkBox">
+                                        <property name="spacing">4</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="icon-name">vpf-search-symbolic</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="label">搜索</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="margin-end">3</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-top">5</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="set_add_camera_delete_button">
+                                    <property name="child">
+                                      <object class="GtkBox">
+                                        <property name="spacing">4</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="icon-name">vpf-trash-symbolic</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="label">删除</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="set_add_camera_column_scrolled_window">
+                                <property name="hexpand">True</property>
+                                <property name="overflow">hidden</property>
+                                <property name="vexpand">True</property>
+                                <child>
+                                  <object class="GtkColumnView" id="set_add_camera_column_view">
+                                    <property name="enable-rubberband">True</property>
+                                    <property name="hexpand">True</property>
+                                    <property name="model">add_camera_column_view_selection</property>
+                                    <property name="show-row-separators">True</property>
+                                    <property name="single-click-activate">True</property>
+                                    <property name="vexpand">True</property>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_select_status_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">view1_select_status_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">选择</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_name_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">camera_name_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">名称</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_type_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">type_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">设备类型</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_link_param_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">link_param_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">连接参数</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_serial_number_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">serial_number_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">序列号</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_network_status_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">network_status_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">网络状态</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_out1_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">out1_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">报警输出1</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkColumnViewColumn" id="set_add_camera_out2_column">
+                                        <property name="expand">True</property>
+                                        <property name="factory">out2_item_factory</property>
+                                        <property name="resizable">True</property>
+                                        <property name="title">报警输出2</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkPaned" id="set_all_camera_paned">
+                            <property name="hexpand">True</property>
+                            <property name="orientation">vertical</property>
+                            <property name="vexpand">True</property>
+                            <child>
+                              <object class="GtkBox" id="set_all_camera_button_hbox">
+                                <property name="margin-start">2</property>
+                                <child>
+                                  <object class="GtkButton" id="set_all_camera_search_button">
+                                    <property name="child">
+                                      <object class="GtkBox">
+                                        <property name="spacing">4</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="icon-name">vpf-search-symbolic</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="label">搜索</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-top">5</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="AdwToastOverlay" id="set_all_camera_toast_overlay">
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">True</property>
+                                <property name="child">
+                                  <object class="GtkScrolledWindow" id="set_all_camera_column_scrolled_window">
+                                    <property name="hexpand">True</property>
+                                    <property name="vexpand">True</property>
+                                    <child>
+                                      <object class="GtkColumnView" id="set_all_camera_column_view">
+                                        <property name="hexpand">True</property>
+                                        <property name="model">all_camera_column_view_selection</property>
+                                        <property name="show-row-separators">True</property>
+                                        <property name="single-click-activate">True</property>
+                                        <property name="vexpand">True</property>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_select_status_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">view2_select_status_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">选择</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_name_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">camera_name_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">名称</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_type_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">type_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">设备类型</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_link_param_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">link_param_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">连接参数</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_serial_number_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">serial_number_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">序列号</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_user_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">user_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">用户名</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_password_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">password_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">密码</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_activate_status_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">activate_status_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">设备状态</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkColumnViewColumn" id="set_all_camera_add_status_column">
+                                            <property name="expand">True</property>
+                                            <property name="factory">add_status_item_factory</property>
+                                            <property name="resizable">True</property>
+                                            <property name="title">添加状态</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwHeaderBar" id="set_all_camera_button_bar">
+                            <property name="show-end-title-buttons">False</property>
+                            <child type="title">
+                              <object class="GtkLabel">
+                                <property name="opacity">0.0</property>
+                              </object>
+                            </child>
+                            <child type="end">
+                              <object class="GtkBox" id="set_all_camera_button_bar_hbox">
+                                <property name="hexpand">True</property>
+                                <property name="spacing">5</property>
+                                <property name="vexpand">True</property>
+                                <child>
+                                  <object class="GtkButton" id="set_all_camera_activate_status_button">
+                                    <property name="label">激活设备</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="set_all_camera_add_status_button">
+                                    <property name="label">添加设备</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+                <property name="name">视频管理</property>
+                <property name="title">视频管理</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <object class="GtkBuilderListItemFactory" id="camera_name_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkEditableLabel">
+        <property name="xalign">0</property>
+        <binding name="text">
+          <lookup name="type" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="view2_select_status_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkCheckButton">
+        <binding name="active">
+          <lookup name="view2-select-status" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+        <signal name="toggled" handler="view2_select_item_changed"/>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="network_status_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="network-status" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="add_status_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="add-status" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="activate_status_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="active-status" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="password_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkEditableLabel">
+        <property name="xalign">0</property>
+        <binding name="text">
+          <lookup name="password" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="user_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="user" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="serial_number_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="serial-number" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="link_param_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="link-param" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="type_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="type" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="out1_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkDropDown">
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">继电器1</item>
+              <item translatable="yes">继电器2</item>
+              <item translatable="yes">继电器3</item>
+            </items>
+          </object>
+        </property>
+        <binding name="selected">
+          <lookup name="out1" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="out2_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkDropDown">
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">RS485</item>
+              <item translatable="yes">CAN</item>
+              <item translatable="yes">UART</item>
+            </items>
+          </object>
+        </property>
+        <binding name="selected">
+          <lookup name="out2" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="view1_select_status_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkCheckButton">
+        <binding name="active">
+          <lookup name="view1-select-status" type="VpfCameraList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+        <signal name="toggled" handler="view1_select_item_changed"/>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="detect_active_statute_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkCheckButton">
+        <binding name="active">
+          <lookup name="active" type="VpfDetectSetList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="detect_background_color_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkDropDown">
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">黄色</item>
+              <item translatable="yes">红色</item>
+              <item translatable="yes">蓝色</item>
+            </items>
+          </object>
+        </property>
+        <binding name="selected">
+          <lookup name="background-color" type="VpfDetectSetList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="detect_border_color_item_fatory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkDropDown">
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">黄色</item>
+              <item translatable="yes">红色</item>
+              <item translatable="yes">蓝色</item>
+            </items>
+          </object>
+        </property>
+        <binding name="selected">
+          <lookup name="border-color" type="VpfDetectSetList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkBuilderListItemFactory" id="detect_type_item_factory">
+    <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <binding name="label">
+          <lookup name="type" type="VpfDetectSetList">
+            <lookup name="item">GtkListItem</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
+  </template>
+</interface>
+]]></property>
+  </object>
+  <object class="GtkSingleSelection" id="detect_column_view_selection"/>
+  <object class="GtkSingleSelection" id="add_camera_column_view_selection"/>
+  <object class="GtkSingleSelection" id="all_camera_column_view_selection"/>
+</interface>
